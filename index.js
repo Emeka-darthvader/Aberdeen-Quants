@@ -90,6 +90,7 @@ function handleMessage(sender_psid, received_message) {
   if (received_message.text) {
 
     const greeting = firstEntity(received_message.nlp, 'greetings');
+    const stocks_info = firstEntity(received_message.nlp, 'stocks-info');
 
     const location = firstEntity(received_message.nlp, 'location');
     const weatherCall = firstEntity(received_message.nlp, 'intent');
@@ -105,7 +106,25 @@ function handleMessage(sender_psid, received_message) {
 
     if (greeting && greeting.confidence > 0.8) {
       response = {
-        "text": "Hi There!"
+        "text": "Hello Goodday."
+      }
+       // Sends the response message
+    callSendAPI(sender_psid, response);  
+    }
+
+    
+    else if (stocks_info && stocks_info.confidence > 0.8) {
+      response = {
+        "text": "Your Stocks are doing fine thanks"
+      }
+       // Sends the response message
+    callSendAPI(sender_psid, response);  
+    }
+
+    
+    else if (stocks_info &&  location && stocks_info.confidence > 0.8) {
+      response = {
+        "text": "Your Stocks are doing fine TODAY thanks!!!"
       }
        // Sends the response message
     callSendAPI(sender_psid, response);  
