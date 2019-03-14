@@ -90,7 +90,7 @@ function handleMessage(sender_psid, received_message) {
   if (received_message.text) {
 
     const greeting = firstEntity(received_message.nlp, 'greetings');
-    const stocks_info = firstEntity(received_message.nlp, 'stocks-info');
+    const stocks_info = firstEntity(received_message.nlp, 'stocks_info');
 
     const location = firstEntity(received_message.nlp, 'location');
     const weatherCall = firstEntity(received_message.nlp, 'intent');
@@ -283,7 +283,7 @@ function handleMessage(sender_psid, received_message) {
     else {
       // Create the payload for a basic text message
       response = {
-        "text": `You sent the message: "${received_message.text}". Now send me an image!"${received_message}"`
+        "text": `You sent the message: "${received_message.text}". Now send me an image!`
       }
 
       // Sends the response message
