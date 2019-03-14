@@ -85,7 +85,7 @@ function firstEntity(nlp, name) {
 function handleMessage(sender_psid, received_message) {
 
   let response;
-  console.log(received_message.text);
+  
   // Check if the message contains text
   if (received_message.text) {
 
@@ -283,7 +283,7 @@ function handleMessage(sender_psid, received_message) {
     else {
       // Create the payload for a basic text message
       response = {
-        "text": `You sent the message: "${received_message.text}". Now send me an image!`
+        "text": `You sent the message: "${received_message.text}". Now send me an image!"${received_message}"`
       }
 
       // Sends the response message
