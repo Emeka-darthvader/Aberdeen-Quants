@@ -114,10 +114,56 @@ function handleMessage(sender_psid, received_message) {
 
     
     else if (stocks_info && stocks_info.confidence > 0.8) {
-      response = {
-        "text": "Your Stocks are doing fine thanks"
-      }
+      // response = {
+      //   "text": "Your Stocks are doing fine thanks"
+      // }
        // Sends the response message
+
+       
+
+       let ARRIAURL = `https://app.studio.arria.com:443/alite_content_generation_webapp/text/v3g3XPEvkxw;`
+ 
+       request({ 
+         headers: {
+        'content-type': 'application/json',
+        'Authorization': 'Bearer eyJhbGciOiJIUzUxMiJ9.eyJqdGkiOiJUMHluQnhQN2RoaEsyN2dKQmJ5T2dUQ0QiLCJpYXQiOjE1NTI1NDgzODYsImV4cCI6MTcxMDIyODM4NiwiaXNzIjoiQUxpdGUiLCJzdWIiOiJCRVlxNzhBQ1lOR18iLCJBTGl0ZS5wZXJtIjpbInByczp4OnYzZzNYUEV2a3h3Il0sIkFMaXRlLnR0IjoidV9hIn0.FCLD4o6AOt5mLtRhUVcerPXlDYdw0njiNXXFTOyPbsSorWCMbg42z9hzY0qCHm9HnV5KgpXL55L8gPYWfw2yRg'
+      },
+        ARRIAURL}
+        , function (err, rsp) {
+         if (err) {
+           response = err;
+           console.log('Werror:', err);
+         }
+         else {
+           console.log('body:', rsp.body);
+           let ARRIA = JSON.parse(rsp.body);
+           if (ARRIA.errorType=="null")
+           {
+             response = {
+               "text": `${ARRIA.result}`
+             }
+           }
+ 
+           else if (weather.cod == 404){
+             if(weather.message==="city not found"){
+               response = {
+                 "text": `This one na city shoo?`
+               }
+               
+             }
+             else {
+               response = {
+                 "text": `Else. Hmmmm. Trying to be smart I See?`
+               }
+             }
+             
+           }
+         }
+ 
+         // Sends the response message
+         callSendAPI(sender_psid, response);
+       });
+
     callSendAPI(sender_psid, response);  
     }
 
