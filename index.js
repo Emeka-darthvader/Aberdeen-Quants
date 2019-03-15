@@ -139,8 +139,8 @@ function handleMessage(sender_psid, received_message) {
            console.log('Werror:', err);
          }
          else {
-           console.log('body:', rsp.body);
-           let ARRIA = JSON.parse(rsp.body);
+           console.log('body:', rsp);
+           let ARRIA = JSON.parse(rsp);
            if (ARRIA.errorType=="null")
            {
              response = {
