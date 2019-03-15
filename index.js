@@ -126,7 +126,7 @@ function handleMessage(sender_psid, received_message) {
        let payloader = querystring.stringify(payloadArria);
        request({ 
          headers: {
-        'content-type': 'application/x-www-form-urlencoded',
+        'content-type': 'application/json',
         'Authorization': 'Bearer eyJhbGciOiJIUzUxMiJ9.eyJqdGkiOiJUMHluQnhQN2RoaEsyN2dKQmJ5T2dUQ0QiLCJpYXQiOjE1NTI1NDgzODYsImV4cCI6MTcxMDIyODM4NiwiaXNzIjoiQUxpdGUiLCJzdWIiOiJCRVlxNzhBQ1lOR18iLCJBTGl0ZS5wZXJtIjpbInByczp4OnYzZzNYUEV2a3h3Il0sIkFMaXRlLnR0IjoidV9hIn0.FCLD4o6AOt5mLtRhUVcerPXlDYdw0njiNXXFTOyPbsSorWCMbg42z9hzY0qCHm9HnV5KgpXL55L8gPYWfw2yRg'
       },
         uri: ARRIAURL,
